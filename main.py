@@ -26,13 +26,13 @@ def main():
 
     st.set_page_config(page_title="Узнать техинфо")
     st.header('Узнать техинфо')
-
-    llm = OpenAI(temperature=0)
-    tools = load_tools(["serpapi", "llm-math"], llm=llm)
-    agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True)
-
+    
     ic = st.text_input('Введите микросхему:')
     if ic is not None:
+        llm = OpenAI(temperature=0)
+        tools = load_tools(["serpapi", "llm-math"], llm=llm)
+        agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True)
+
         response = agent.run(f"What is the MSL (Moisture Sensitivity Level) and Supplier Device Package/Case of {ic}. Write only the necessary data without a description.")
         st.write(response)
 
