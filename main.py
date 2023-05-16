@@ -33,7 +33,7 @@ def main():
 
     ic = st.text_input('Введите микросхему:')
     if ic is not None:
-        response = agent.run(f"What is the MSL (Moisture Sensitivity Level) and package of {ic}. Write only the necessary data without a description.")
+        response = agent.run(f"What is the MSL (Moisture Sensitivity Level) and Supplier Device Package/Case of {ic}. Write only the necessary data without a description.")
         st.write(response)
 
 
