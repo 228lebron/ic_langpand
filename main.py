@@ -33,7 +33,7 @@ def main():
         tools = load_tools(["serpapi", "llm-math"], llm=llm)
         agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True)
 
-        response = agent.run(f"What is the MSL (Moisture Sensitivity Level) and Supplier Device Package/Case of {ic}. Write only the necessary data without a description.")
+        response = agent.run(f"Provide the following information for {ic}: 1) Chip package type; 2) Factory packaging; 3) Moisture Sensitivity Level (MSL). Return only the raw data.")
         st.write(response)
 
 
