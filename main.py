@@ -28,7 +28,7 @@ def main():
     st.header('Узнать техинфо')
     
     ic = st.text_input('Введите микросхему:')
-    if ic is not None:
+    if ic.strip() != '':
         llm = OpenAI(temperature=0)
         tools = load_tools(["serpapi", "llm-math"], llm=llm)
         agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True)
